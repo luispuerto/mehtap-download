@@ -15,7 +15,9 @@ library("tools")
 Now we donwload the file
 
 ```{r file download}
-download.file(url = "https://md-datasets-cache-zipfiles-prod.s3.eu-west-1.amazonaws.com/svg2tscvzs-1.zip", destfile = "data.zip")
+download.file(
+  url = "https://md-datasets-cache-zipfiles-prod.s3.eu-west-1.amazonaws.com/svg2tscvzs-1.zip",
+  destfile = "data.zip")
 ```
 
 We decompress it on the folder `data`. 
