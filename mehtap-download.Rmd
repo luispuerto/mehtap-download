@@ -1,0 +1,41 @@
+---
+title: "Downlaoding Files with R"
+output: html_notebook
+---
+
+This is a small script to download files form the [here][1] with R and transform to csv.
+
+First we are going to load a couple of packages to use them later on. 
+
+```{r, setup}
+library("readstata13")
+library("tools")
+```
+
+Now we donwload the file
+
+```{r file download}
+download.file(url = "https://md-datasets-cache-zipfiles-prod.s3.eu-west-1.amazonaws.com/svg2tscvzs-1.zip", destfile = "data.zip")
+```
+
+We decompress it on the folder `data`. 
+
+```{r decompress}
+unzip("data.zip", exdir = "data")
+```
+
+And we finally transform it to csv files with a function and `lapply`. 
+
+```{r transform, echo=TRUE, results='hide'}
+to_csv <- function(x){
+  if (file_ext(x) == "dta") {
+    dta <- read.dta13(file = x)
+  write.csv(dta, file = paste0("data/", file_path_sans_ext(basename(x)),".csv"), )
+  }
+}
+
+lapply(dir("data", full.names = T), to_csv)
+```
+
+
+[1]: https://data.mendeley.com/datasets/svg2tscvzs/1

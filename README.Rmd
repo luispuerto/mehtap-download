@@ -1,0 +1,13 @@
+---
+title: "Download Stata Files and Converting to CSV"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a small project to download some files form [here][1] and transform them to CSV format. here
+
+
+[1]: https://data.mendeley.com/datasets/svg2tscvzs/1 
